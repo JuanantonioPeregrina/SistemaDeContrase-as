@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraseñas Peregrina</title>
+    <link rel="icon" href="clave.jpg" type="image/x-icon">
+    <!-- Añadir Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Añadir archivo CSS personalizado -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <!-- Barra de navegación superior con offcanvas -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Contraseñas Peregrina</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menú</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Enlace</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Opciones
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Acción</a></li>
+                  <li><a class="dropdown-item" href="#">Otra acción</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+              <button class="btn btn-success" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container" style="margin-top: 100px;">
+      <!-- Alerta de promoción -->
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        ¡Oferta especial! gratis en todos los productos este mes.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+      </div>
+
+      <h1>Bienvenidos a Contraseñas Peregrina</h1>
+
+      <!-- Generador de contraseñas -->
+      <h2 class="mt-5">Generador de Contraseñas Seguras</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="wordCount" class="form-label">Número de palabras:</label>
+          <input type="number" class="form-control" id="wordCount" value="4" min="1">
+        </div>
+        <div class="col-md-6">
+          <div class="form-check mt-4">
+            <input class="form-check-input" type="checkbox" id="capitalize" checked>
+            <label class="form-check-label" for="capitalize">
+              Capitalizar cada palabra
+            </label>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" onclick="generatePassword()">Generar Contraseña</button>
+      <div id="passwordOutput" class="mt-4">
+        <!-- Aquí se mostrará la contraseña generada -->
+      </div>
+
+      <h2 id="sobre" class="mt-5">Sobre Nosotros</h2>
+      <p>Contraseñas Peregrina es una empresa familiar dedicada a la producción de contraseñas aleatoriamente.</p>
+
+      <h2 id="productos" class="mt-5">Nuestros Productos</h2>
+
+      <!-- Tarjetas de productos -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card h-100 text-center ">
+            <img src="clave.jpg" class="card-img-top img-fluid " alt="Jamón Ibérico" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">Cifrado simétrico</h5>
+              <p class="card-text">El mejor método de cifrado aleatorio.</p>
+              <a href="#" class="btn btn-primary">Aquí</a>
+            </div>
+          </div>
+        </div>
+        
+      <h2 id="contacto" class="mt-5">Contacto</h2>
+      <p>Para consultas, puedes enviarnos un correo a <a href="mailto:info@clavesperegrina.com">info@clavesperegrina.com</a> o llamarnos al +34 123 456 789.</p>
+
+      <footer>
+        <p>Contraseñas Peregrina &copy; 2024</p>
+      </footer>
+    </div>
+
+    <!-- Añadir Bootstrap JS y Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Diccionario de palabras
+        const dictionary = [
+            "cosmos", "neutrino", "algebra", "quasar", "tesseract", "entropia", "genetica", "fotovoltaico",
+            "quimera", "metafisica", "criptografia", "relatividad", "sinergia", "fractal", "hipotenusa",
+            "fibonacci", "oxigeno", "biorritmo", "turbina", "electrodo", "pulsar", "sinapsis", "proteina",
+            "hemisferio", "antropologia", "hermenéutica", "logaritmo", "magnetismo", "bioluminiscencia",
+            "anemometro", "epistemologia", "nanotecnologia", "paradoja", "gravedad", "mitocondria", "caligrafia", "@", "#", "_"
+        ];
+
+        function generatePassword() {
+            let wordCount = parseInt(document.getElementById('wordCount').value); // Número de palabras
+            let capitalize = document.getElementById('capitalize').checked; // Opción para capitalizar (Primera letra mayus)
+            let password = [];
+            let usedWords = new Set(); // Evitar palabras repetidas
+            let totalLength = 0;
+
+            while (password.length < wordCount && totalLength < 64) {
+                let randomIndex = Math.floor(Math.random() * dictionary.length);
+                let randomWord = dictionary[randomIndex];
+
+                // Si la palabra ya fue utilizada, saltarla
+                if (usedWords.has(randomWord)) continue;
+
+                // Capitalizar la palabra si está seleccionado
+                if (capitalize) {
+                    randomWord = randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
+                }
+
+                if ((totalLength + randomWord.length) > 64) break; // Limitar la longitud a 64 caracteres
+
+                password.push(randomWord);
+                usedWords.add(randomWord);
+                totalLength += randomWord.length + 1; // Incluye espacio para el guion
+            }
+
+            // Validar longitud mínima
+            if (totalLength < 8) {
+                document.getElementById('passwordOutput').innerText = "Error: La contraseña generada tiene menos de 8 caracteres. Intenta aumentar el número de palabras.";
+            } else {
+                document.getElementById('passwordOutput').innerText = "Contraseña generada: " + password.join("");
+            }
+        }
+    </script>
+</body>
+</html>

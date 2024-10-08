@@ -1,0 +1,107 @@
+p {
+    margin-bottom: 25px; /* Espacio debajo del párrafo */
+}
+
+/* Estilo para la barra de navegación */
+.navbar {
+    background-color: #4a148c;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.navbar-toggler-icon {
+    background-color: #ffffff;
+}
+
+/* Hover sobre enlaces en la barra */
+.nav-link:hover {
+    color: #ffd600 !important;
+    font-weight: bold;
+}
+
+/* Estilo para los títulos */
+h1 {
+    color: #880e4f;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #004d40;
+    font-family: 'Verdana', sans-serif;
+}
+
+/* Estilo para las listas */
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+ul li {
+    color: #0d47a1;
+    font-size: 1.1rem;
+    margin: 5px 0;
+    margin-bottom: 25px
+    
+}
+
+/* Estilo para los enlaces */
+a {
+    color: #1565c0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff5722;
+    text-decoration: underline;
+}
+
+/* Botones personalizados */
+.btn-success {
+    background-color: #388e3c;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #1b5e20;
+    color: #ffffff;
+}
+
+/* Formulario de búsqueda */
+form input[type="search"] {
+    border: 2px solid #0d47a1;
+}
+
+/* Footer */
+footer {
+    background-color: #eeeeee;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #616161;
+    border-top: 1px solid #9e9e9e;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 30px;
+}
+
+/* Offcanvas */
+.offcanvas {
+    background-color: #2e7d32;
+}
+
+.offcanvas-header h5 {
+    color: #ffffff;
+}
+
